@@ -1,0 +1,70 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% if entry is defined %}{{ entry.title }} - {% endif %}{{ siteName }}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title"
+          content="{% block ogTitle %}{% if entry is defined %}{{ entry.title }} - {% endif %}{{ siteName }}{% endblock %}"/>
+    <meta property="og:site_name" content="{{ siteName }}"/>
+    <meta property="og:url" content="{% if entry is defined %}{{ entry.url }}{% endif %}"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:image" content="{% block ogImage %}{% endblock %}"/>
+    <meta property="fb:app_id" content=""/>
+
+    <link rel="stylesheet" href="/styles/main.css" media="screen, projection"/>
+</head>
+
+<body>
+    
+    <header class="page-head">
+        <div class="wrapper">
+    
+        </div>
+    </header>
+    
+    {% block content %}
+    {% endblock %}
+    
+    <footer class="page-foot">
+    
+    </footer>
+    
+    <script src="/scripts/main.js"></script>
+    {% if craft.config.environment == "production" %}
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    {% endif %}
+</body>
+</html>

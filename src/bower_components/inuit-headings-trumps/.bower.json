@@ -1,0 +1,30 @@
+{
+  "name": "inuit-headings-trumps",
+  "version": "0.1.2",
+  "homepage": "https://github.com/inuitcss/trumps.headings",
+  "authors": [
+    "Harry Roberts <harry@csswizardry.com>"
+  ],
+  "description": "Helper classes for inuitcss’ headings.",
+  "main": "_trumps.headings.scss",
+  "keywords": [
+    "typography",
+    "type",
+    "inuitcss",
+    "oocss",
+    "css"
+  ],
+  "license": "Apache",
+  "dependencies": {
+    "inuit-headings": "~0.2.2"
+  },
+  "_release": "0.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.2",
+    "commit": "d17eb960589438a04970b6cac2653452c46b61e5"
+  },
+  "_source": "git://github.com/inuitcss/trumps.headings.git",
+  "_target": "~0.1.2",
+  "_originalSource": "inuit-headings-trumps"
+}

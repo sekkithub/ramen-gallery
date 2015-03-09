@@ -1,0 +1,46 @@
+# THE NEIGHBOURHOOD FRONT-END FRAMEWORK .gitignore
+#
+craft/config/local/*
+!craft/config/local/db.example.php
+!craft/config/local/general.example.php
+
+
+# CMS MANAGED FILES
+# ------------------------------------------------------------
+public/cms/
+public/cms/*
+
+
+# CRAFT STORAGE STUFF
+# It's probably safe to ignore the following in the storage folders.
+# The rest of the items in the storage folder are up to us...
+# ------------------------------------------------------------
+craft/storage
+craft/storage/*
+craft/storage/runtime/*
+craft/storage/backups/*
+
+
+# MISC FILES
+# ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-workspace
+*.sublime-project
+*.komodoproject
+.komodotools
+_notes
+dwsync.xml
+logs/*
+.sass-cache/
+node_modules/
+fabfile.pyc
+ai-cache/
+.idea/
+phpinfo.php

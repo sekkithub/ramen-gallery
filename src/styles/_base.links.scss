@@ -1,0 +1,11 @@
+/* =======================
+   Base/Links
+   ======================= */
+
+a {
+    text-decoration: none;
+
+    @include attention() {
+        text-decoration: underline;
+    }
+}

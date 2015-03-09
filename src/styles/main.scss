@@ -1,0 +1,144 @@
+/*------------------------------------*\
+    #The Neighbourhood - Style Framework
+\*------------------------------------*/
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Default..............inuitcss’ default settings.
+ * Global...............Globally-available variables and settings/config.
+ * Colors...............Manage our color palette in isolation.
+ * Responsive...........Set up and name our breakpoints.
+ *
+ * TOOLS
+ * Functions............inuitcss’ default functions.
+ * Mixins...............inuitcss’ default mixins.
+ * Mixins...............Our extension of inuitcss’ mixins.
+ * Responsive...........Responsive tooling (requires responsive settings).
+ * Aliases..............Aliases onto longer inuitcss variables and mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Reset................A pared back reset to remove margins.
+ * Box-sizing...........Better default `box-sizing`.
+ * Shared...............Sensibly and tersely share global commonalities.
+ *
+ * BASE
+ * Page.................Page-level styles (HTML element).
+ * Page.................Our extension of the inuitcss page module.
+ * Headings.............Heading styles
+ * Type.................Misc type styles
+ * Links................Hyperlink styles
+ * Lists................inuitcss list styles
+ * Images...............inuitcss images
+ *
+ * OBJECTS
+ * Wrappers.............Wrappers and page constraints.
+ * Buttons..............inuitcss’ buttons module.
+ * Layout...............inuitcss’ layout tool.
+ * Box..................inuitcss’ box object.
+ * Media................The media object.
+ * Block................inuitcss’ block object.
+ *
+ * COMPONENTS
+ * Page-head............Page header styles.
+ *
+ * TRUMPS
+ * Clearfix.............Clearfix.
+ * Spacing..............Micro-level spacing.
+ * Spacing-responsive...Responsive micro-level spacing.
+ * Headings.............Heading styles.
+ * Headings-responsive..Responsive heading styles.
+ * Widths...............Simple width helper classes.
+ * Widths-responsive....Polyfill for responsive width classes.
+ */
+
+
+// @import "bourbon";
+
+
+/**
+ * #SETTINGS
+ */
+@import "../bower_components/inuit-defaults/settings.defaults";
+@import "settings.global";
+@import "settings.colors";
+@import "../bower_components/inuit-responsive-settings/settings.responsive";
+
+
+
+
+
+/**
+ * #TOOLS
+ */
+@import "../bower_components/inuit-functions/tools.functions";
+@import "../bower_components/inuit-mixins/tools.mixins";
+@import "tools.mixins";
+@import "../bower_components/inuit-responsive-tools/tools.responsive";
+@import "tools.aliases";
+
+
+
+
+
+/**
+ * #GENERIC
+ */
+@import "../bower_components/inuit-normalize/generic.normalize";
+@import "../bower_components/inuit-reset/generic.reset";
+@import "../bower_components/inuit-box-sizing/generic.box-sizing";
+@import "../bower_components/inuit-shared/generic.shared";
+
+
+
+
+
+/**
+ * #BASE
+ */
+@import "../bower_components/inuit-page/base.page";
+@import "base.page";
+@import "../bower_components/inuit-headings/base.headings";
+@import "base.type";
+@import "base.links";
+@import "../bower_components/inuit-lists/base.lists";
+@import "../bower_components/inuit-images/base.images";
+
+
+
+
+
+/**
+ * #OBJECTS
+ */
+@import "objects.wrappers";
+@import "../bower_components/inuit-buttons/objects.buttons";
+@import "../bower_components/inuit-layout/objects.layout";
+@import "../bower_components/inuit-box/objects.box";
+@import "../bower_components/inuit-media/objects.media";
+@import "../bower_components/inuit-block/objects.block";
+
+
+
+
+/**
+ * #COMPONENTS
+ */
+@import "components.page-head";
+
+
+
+
+
+/**
+ * #TRUMPS
+ */
+@import "../bower_components/inuit-clearfix/trumps.clearfix";
+@import "../bower_components/inuit-spacing/trumps.spacing";
+@import "../bower_components/inuit-spacing-responsive/trumps.spacing-responsive";
+@import "../bower_components/inuit-headings-trumps/trumps.headings";
+@import "../bower_components/inuit-responsive-headings/trumps.headings-responsive";
+@import "../bower_components/inuit-widths/trumps.widths";
+@import "../bower_components/inuit-widths-responsive/trumps.widths-responsive";
