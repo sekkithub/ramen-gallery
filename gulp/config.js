@@ -10,7 +10,7 @@ module.exports = {
             "!" + dest + "/**.map",
             templates + "/**"
         ],
-        proxy: 'base.app'
+        proxy: 'ramen-gallery.app:7777'
     },
     sass: {
         src: src + '/styles',
