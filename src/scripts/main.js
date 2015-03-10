@@ -1,1 +1,1 @@
-require('./modules/greetings').init();
+require('./modules/good-parallax').init();
