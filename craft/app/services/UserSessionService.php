@@ -604,7 +604,7 @@ class UserSessionService extends \CWebUser
 						if ($this->allowAutoLogin)
 						{
 							// Save the necessary info to the identity cookie.
-							$sessionToken = StringHelper::UUID();
+							$sessionToken = craft()->security->generateRandomString(32);
 							$hashedToken = craft()->security->hashData(base64_encode(serialize($sessionToken)));
 							$uid = $this->storeSessionToken($user, $hashedToken);
 
@@ -823,15 +823,10 @@ class UserSessionService extends \CWebUser
 	{
 		$name = $this->getStateKeyPrefix().$name;
 		$cookie = new HttpCookie($name, '');
-		$cookie->httpOnly = true;
+
 		$cookie->expire = time() + $duration;
-
-		if (craft()->request->isSecureConnection())
-		{
-			$cookie->secure = true;
-		}
-
 		$cookie->value = craft()->security->hashData(base64_encode(serialize($data)));
+
 		craft()->request->getCookies()->add($cookie->name, $cookie);
 
 		return $cookie;
@@ -1047,6 +1042,82 @@ class UserSessionService extends \CWebUser
 		}
 	}
 
+	/**
+	 * Overriding Yii's implementation to make sure that session has been started before calling.
+	 *
+	 * @param string $key
+	 * @param null   $defaultValue
+	 *
+	 * @return mixed|void
+	 */
+	public function getState($key, $defaultValue = null)
+	{
+		// Ensure session is open first.
+		craft()->session->open();
+
+		return parent::getState($key, $defaultValue);
+	}
+
+	/**
+	 * Overriding Yii's implementation to make sure that session has been started before calling.
+	 *
+	 * @param string $key
+	 * @param mixed  $value
+	 * @param null   $defaultValue
+	 *
+	 * @return null
+	 */
+	public function setState($key, $value, $defaultValue = null)
+	{
+		// Ensure session is open first.
+		craft()->session->open();
+
+		parent::setState($key, $value, $defaultValue);
+	}
+
+	/**
+	 * Overriding Yii's implementation to make sure that session has been started before calling.
+	 *
+	 * @param string $key
+	 *
+	 * @return bool|void
+	 */
+	public function hasState($key)
+	{
+		// Ensure session is open first.
+		craft()->session->open();
+
+		return parent::hasState($key);
+	}
+
+	/**
+	 * Overriding Yii's implementation to make sure that session has been started before calling.
+	 *
+	 * @return null
+	 */
+	public function clearStates()
+	{
+		// Ensure session is open first.
+		craft()->session->open();
+
+		parent::clearStates();
+	}
+
+	/**
+	 * Overriding Yii's implementation to make sure that session has been started before calling.
+	 *
+	 * @param bool $delete
+	 *
+	 * @return array|void
+	 */
+	public function getFlashes($delete = true)
+	{
+		// Ensure session is open first.
+		craft()->session->open();
+
+		return parent::getFlashes($delete);
+	}
+
 	// Events
 	// -------------------------------------------------------------------------
 
@@ -1166,7 +1237,7 @@ class UserSessionService extends \CWebUser
 				// Extend the expiration time
 				$expiration = time() + $this->authTimeout;
 				$cookie->expire = $expiration;
-				$cookie->httpOnly = true;
+
 				craft()->request->getCookies()->add($cookie->name, $cookie);
 			}
 		}
@@ -1217,7 +1288,7 @@ class UserSessionService extends \CWebUser
 					// Make sure the given session token matches what we have in the db.
 					$checkHashedToken= craft()->security->hashData(base64_encode(serialize($currentSessionToken)));
 
-					if (strcmp($checkHashedToken, $dbHashedToken) === 0)
+					if (\CPasswordHelper::same($checkHashedToken, $dbHashedToken))
 					{
 						// It's all good.
 						if($this->beforeLogin($loginName, $states, true))
@@ -1227,7 +1298,7 @@ class UserSessionService extends \CWebUser
 							if ($this->autoRenewCookie)
 							{
 								// Generate a new session token for the database and cookie.
-								$newSessionToken = StringHelper::UUID();
+								$newSessionToken = craft()->security->generateRandomString(32);
 								$hashedNewToken = craft()->security->hashData(base64_encode(serialize($newSessionToken)));
 								$this->_updateSessionToken($loginName, $dbHashedToken, $hashedNewToken);
 
@@ -1349,6 +1420,12 @@ class UserSessionService extends \CWebUser
 
 		// Delete the identity cookie, if there is one
 		$this->deleteStateCookie('');
+
+		if (craft()->config->get('enableCsrfProtection'))
+		{
+			// Let's keep the current nonce around.
+			craft()->request->regenCsrfCookie();
+		}
 
 		// Fire an 'onLogout' event
 		$this->onLogout(new Event($this));

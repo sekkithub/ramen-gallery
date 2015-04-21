@@ -88,6 +88,11 @@ class HttpRequestService extends \CHttpRequest
 	 */
 	private $_cookies;
 
+	/**
+	 * @var
+	 */
+	private $_csrfToken;
+
 	// Public Methods
 	// =========================================================================
 
@@ -1186,11 +1191,115 @@ class HttpRequestService extends \CHttpRequest
 		ob_end_flush();
 		flush();
 
-		// Borrowed from CHttpSession->close() because session_write_close can cause PHP notices in some situations.
-		if (session_id() !== '')
+		// Close the session.
+		craft()->session->close();
+	}
+
+	/**
+	 * Performs the CSRF validation. This is the event handler responding to {@link CApplication::onBeginRequest}.
+	 * The default implementation will compare the CSRF token obtained from session and from a POST field. If they
+	 * are different, a CSRF attack is detected.
+	 *
+	 * @param Event $event event parameter
+	 *
+	 * @throws HttpException If the validation fails
+	 */
+	public function validateCsrfToken($event)
+	{
+		if ($this->getIsPostRequest() || $this->getIsPutRequest() || $this->getIsDeleteRequest())
 		{
-			@session_write_close();
+			$method = $this->getRequestType();
+
+			switch($method)
+			{
+				case 'POST':
+				{
+					$tokenFromPost = $this->getPost($this->csrfTokenName);
+					break;
+				}
+
+				case 'PUT':
+				{
+					$tokenFromPost = $this->getPut($this->csrfTokenName);
+					break;
+				}
+
+				case 'DELETE':
+				{
+					$tokenFromPost = $this->getDelete($this->csrfTokenName);
+				}
+			}
+
+			$cookies = $this->getCookies();
+			$csrfCookie = $this->getCookies()->itemAt($this->csrfTokenName);
+
+			if (!empty($tokenFromPost) && $csrfCookie && $csrfCookie->value)
+			{
+				// Must at least match the cookie so that tokens from previous sessions won't work
+				if (\CPasswordHelper::same($csrfCookie->value, $tokenFromPost))
+				{
+					// TODO: Remove this nested condition after the next breakpoint and call csrfTokenValidForCurrentUser() directly.
+					// Is this an update request?
+					if ($this->isActionRequest() && isset($this->_actionSegments[0]) && $this->_actionSegments[0] == 'update')
+					{
+						return true;
+					}
+					else
+					{
+						$valid = $this->csrfTokenValidForCurrentUser($tokenFromPost);
+					}
+				}
+				else
+				{
+					$valid = false;
+				}
+			}
+			else
+			{
+				$valid = false;
+			}
+
+			if (!$valid)
+			{
+				throw new HttpException(400, Craft::t('The CSRF token could not be verified.'));
+			}
 		}
+	}
+
+	/**
+	 * Gets the current CSRF token from the CSRF token cookie, (re)creating the cookie if it is missing or invalid.
+	 *
+	 * @return string
+	 * @throws \CException
+	 */
+	public function getCsrfToken()
+	{
+		if ($this->_csrfToken === null)
+		{
+			$cookie = $this->getCookies()->itemAt($this->csrfTokenName);
+
+			// Reset the CSRF token cookie if it's not set, or for another user.
+			if (!$cookie || ($this->_csrfToken = $cookie->value) == null || !$this->csrfTokenValidForCurrentUser($cookie->value))
+			{
+				$cookie = $this->createCsrfCookie();
+				$this->_csrfToken = $cookie->value;
+				$this->getCookies()->add($cookie->name, $cookie);
+			}
+		}
+
+		return $this->_csrfToken;
+	}
+
+	/**
+	 *
+	 *
+	 * @throws \CException
+	 */
+	public function regenCsrfCookie()
+	{
+		$cookie = $this->createCsrfCookie();
+		$this->_csrfToken = $cookie->value;
+		$this->getCookies()->add($cookie->name, $cookie);
 	}
 
 	// Protected Methods
@@ -1200,11 +1309,56 @@ class HttpRequestService extends \CHttpRequest
 	 * Creates a cookie with a randomly generated CSRF token. Initial values specified in {@link csrfCookie} will be
 	 * applied to the generated cookie.
 	 *
-	 * @return HttpCookie the generated cookie
+	 * @return HttpCookie The generated cookie
 	 */
 	protected function createCsrfCookie()
 	{
-		$cookie = new HttpCookie($this->csrfTokenName, sha1(uniqid(mt_rand(), true)));
+		$currentUser = false;
+
+		$cookie = $this->getCookies()->itemAt($this->csrfTokenName);
+
+		if ($cookie)
+		{
+			// They have an existing CSRF cookie.
+			$value = $cookie->value;
+
+			// It's a CSRF cookie that came from an authenitcated request.
+			if (strpos($value, '|') !== false)
+			{
+				// Grab the existing nonce.
+				$parts = explode('|', $value);
+				$nonce = $parts[0];
+			}
+			else
+			{
+				// It's a CSRF cookie from an unauthenticated request.
+				$nonce = $value;
+			}
+		}
+		else
+		{
+			// No previous CSRF cookie, generate a new nonce.
+			$nonce = craft()->security->generateRandomString(40);
+		}
+
+		// Authenticated users
+		if (craft()->getComponent('userSession', false) && ($currentUser = craft()->userSession->getUser()))
+		{
+			// We mix the password into the token so that it will become invalid when the user changes their password.
+			// The salt on the blowfish hash will be different even if they change their password to the same thing.
+			// Normally using the session ID would be a better choice, but PHP's bananas session handling makes that difficult.
+			$passwordHash = $currentUser->password;
+			$userId = $currentUser->id;
+			$hashable = implode('|', array($nonce, $userId, $passwordHash));
+			$token = $nonce.'|'.craft()->security->computeHMAC($hashable);
+		}
+		else
+		{
+			// Unauthenticated users.
+			$token = $nonce;
+		}
+
+		$cookie = new HttpCookie($this->csrfTokenName, $token);
 
 		if (is_array($this->csrfCookie))
 		{
@@ -1214,10 +1368,50 @@ class HttpRequestService extends \CHttpRequest
 			}
 		}
 
-		// Set to HTTP only
-		$cookie->httpOnly = true;
-
 		return $cookie;
+	}
+
+	/**
+	 * Gets whether the CSRF token is valid for the current user or not
+	 *
+	 * @param $token
+	 *
+	 * @return bool
+	 * @throws \CException
+	 */
+	protected function csrfTokenValidForCurrentUser($token)
+	{
+		$currentUser = false;
+
+		if (craft()->isInstalled() && craft()->getComponent('userSession', false))
+		{
+			$currentUser = craft()->userSession->getUser();
+		}
+
+		if ($currentUser)
+		{
+			$splitToken = explode('|', $token, 2);
+
+			if (count($splitToken) !== 2)
+			{
+				return false;
+			}
+
+			list($nonce, $hashFromToken) = $splitToken;
+
+			// Check that this token is for the current user
+			$passwordHash = $currentUser->password;
+			$userId = $currentUser->id;
+			$hashable = implode('|', array($nonce, $userId, $passwordHash));
+			$expectedToken = $nonce.'|'.craft()->security->computeHMAC($hashable);
+
+			return \CPasswordHelper::same($token, $expectedToken);
+		}
+		else
+		{
+			// If they're logged out, any token is fine
+			return true;
+		}
 	}
 
 	// Private Methods

@@ -32,6 +32,11 @@ var init = function() {
                 if($(this).attr('data-direction') === 'up'){ sym = '-'; } else { sym = ''; }
                 $(this).css('transform','translate3d(0, ' + sym + distance +'px,0)');
             });
+
+            $('[data-bg="true"]').each(function(){
+                distance = viewportTop * $(this).attr('data-speed');
+                $(this).css('transform','rotate(' + sym + distance + 'deg)');
+            });
         }
     }   
     
