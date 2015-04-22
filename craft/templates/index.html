@@ -20,24 +20,25 @@
 {% extends "_layout" %}
 
 {% block content %}
-<div class="wrapper">
-    <ul>
-<!--
-        <li data-parallax="true" data-speed="0.04" data-direction="up">Bone Daddies</li>
-        <li data-parallax="true" data-speed="0.04" data-direction="up">IPPUDO</li>
-        <li data-parallax="true" data-speed="0.04" data-direction="up">KANADA-YA</li>
-        <li data-parallax="true" data-speed="0.04" data-direction="up">SASUKE</li>
-        <li data-parallax="true" data-speed="0.04" data-direction="up">BSHORYU</li>
-        <li data-parallax="true" data-speed="0.04" data-direction="up">TONKOTSU</li>
-        <li data-parallax="true" data-speed="0.04" data-direction="up">UNITED RAMEN</li>
--->
-        <li>Bone Daddies</li>
-        <li>IPPUDO</li>
-        <li>KANADA-YA</li>
-        <li>SASUKE</li>
-        <li>BSHORYU</li>
-        <li>TONKOTSU</li>
-        <li>UNITED RAMEN</li>
+<div class="container">
+    <div class="line-up--title">Line-up</div>
+    <ul class="line-up--list">
+        <li class="shop">Bone Daddies</li>
+        <li class="shop">IPPUDO</li>
+        <li class="shop">KANADA-YA</li>
+        <li class="shop">SASUKE</li>
+        <li class="shop">BSHORYU</li>
+        <li class="shop">TONKOTSU</li>
+        <li class="shop">UNITED RAMEN</li>
     </ul>
+
+    <div class="bridge-to-footer">
+        <h3>London Ramen Map</h3>
+        <div class="arrow">
+            <object>
+                <embed src="/assets/svgs/arrow.svg" width="100%" style="max-width: 60px;">
+            </object>
+        </div>
+    </div>
 </div>
 {% endblock %}

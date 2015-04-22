@@ -39,8 +39,12 @@
     <header class="page-head">
         <div class="wrapper">
             <div class="scroll-value">0</div>
-            <img src="/assets/images/rotating-ramen.jpg" data-bg="true" data-speed="0.05">
-            <h1 data-parallax="true" data-speed="0.2" data-direction="up">RAMEN GALLERY</h1>
+            <div class="rotating-ramen"></div>
+            <div class="title">
+                <object>
+                    <embed src="/assets/svgs/title.svg" width="100%" style="max-width: 700px;">
+                </object>
+            </div>
         </div>
     </header>
     
@@ -48,7 +52,11 @@
     {% endblock %}
     
     <footer class="page-foot">
-    
+        <div class="ramen-map--logo">
+            <object>
+                <embed src="/assets/svgs/ramen-map--logo.svg" width="100%" style="max-width: 60px;">
+            </object>
+        </div>
     </footer>
     
     <script src="/scripts/main.js"></script>

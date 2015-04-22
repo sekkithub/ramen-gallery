@@ -1,0 +1,14 @@
+/* =======================
+   Components/Bridge to Footer
+   ======================= */
+
+.bridge-to-footer {
+    margin-bottom: $spacing-unit--large * 4;
+
+    h3 {
+        text-transform: uppercase;
+        margin-bottom: $spacing-unit--small;
+        @include font-size(50px);
+        @include font-weight(bold);
+    }
+}

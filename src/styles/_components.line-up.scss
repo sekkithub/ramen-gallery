@@ -1,0 +1,23 @@
+/* =======================
+   Components/Line-up
+   ======================= */
+
+.line-up--title {
+    border-bottom: 16px solid $orange;
+    color: $orange;
+    display: inline-block;
+    line-height: 90px;
+    margin-bottom: $spacing-unit--large * 4;
+    text-transform: uppercase;
+    @include font-size(90px);
+    @include font-weight(bold);
+}
+
+    .line-up--list {
+        
+    }
+    
+        .shop {
+            margin-bottom: $spacing-unit--large * 4;
+            @include font-size(70px);
+        }
