@@ -6,10 +6,10 @@
     border-bottom: 16px solid $orange;
     color: $orange;
     display: inline-block;
-    line-height: 90px;
+    line-height: 80px;
     margin-bottom: $spacing-unit--large * 4;
     text-transform: uppercase;
-    @include font-size(90px);
+    @include font-size(80px);
     @include font-weight(bold);
 }
 
