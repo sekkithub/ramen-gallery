@@ -3,7 +3,22 @@
    ======================= */
 
 .page-foot {
-    background: #000;
+    background: $color-black;
+    display: table;
     height: 100vh;
     width: 100%;
+}
+
+.ramen-map--logo {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    
+    a {
+        display: inline-block;
+    }
+    
+    object {
+        pointer-events: none;
+    }
 }
