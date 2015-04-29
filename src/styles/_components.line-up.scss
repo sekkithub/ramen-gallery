@@ -18,6 +18,8 @@
     }
     
         .shop {
+            cursor: pointer;
             margin-bottom: $spacing-unit--large * 4;
+            transition: all 0.4s ease;
             @include font-size(70px);
         }
