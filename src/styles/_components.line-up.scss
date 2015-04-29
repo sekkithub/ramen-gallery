@@ -7,7 +7,7 @@
     color: $orange;
     display: inline-block;
     line-height: 80px;
-    margin-bottom: $spacing-unit--large * 4;
+    margin-bottom: $spacing-unit--large * 6;
     text-transform: uppercase;
     @include font-size(80px);
     @include font-weight(bold);
@@ -19,7 +19,7 @@
     
         .shop {
             cursor: pointer;
-            margin-bottom: $spacing-unit--large * 4;
+            margin-bottom: $spacing-unit--large * 6;
             transition: all 0.4s ease;
             @include font-size(70px);
         }
