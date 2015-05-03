@@ -21,17 +21,15 @@
 
 {% block content %}
 <div class="container">
-    <div class="line-up--title">Line-up</div>
+    <div class="line-up--title">{{ entry.title }}</div>
     <ul class="line-up--list">
-        <li class="shop green">Bone Daddies</li>
-        <li class="shop orange">IPPUDO</li>
-        <li class="shop blue">KANADA-YA</li>
-        <li class="shop dark-pink">SASUKE</li>
-        <li class="shop green">SHORYU</li>
-        <li class="shop orange">TONKOTSU</li>
-        <li class="shop dark-pink">UNITED RAMEN</li>
-    </ul>
 
+        {% for block in entry.ramenlist %}
+            <li class="shop {{ block.image.first() }} {{ cycle(['green','blue', 'orange', 'dark-pink'], loop.index0) }}">{{ block.restaurantName }}</li>
+            <li class="gallery {{ block.image.first() }}"></li>
+        {% endfor %}
+
+    </ul>
     <div class="bridge-to-footer">
         <div class="wrapper">
             <h3><a href="#footer">London Ramen Map</a></h3>

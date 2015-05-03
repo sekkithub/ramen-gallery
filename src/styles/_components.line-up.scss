@@ -3,9 +3,11 @@
    ======================= */
 
 .line-up--title {
-    border-bottom: 16px solid $orange;
+    border-bottom: 10px solid $orange;
     color: $orange;
     display: inline-block;
+    font-family: 'Rotondac-Bold';
+    letter-spacing: .08em;
     line-height: 80px;
     margin-bottom: $spacing-unit--large * 6;
     text-transform: uppercase;
@@ -14,7 +16,7 @@
 }
 
     .line-up--list {
-        
+        font-family: 'Rotondac-Regular';
     }
     
         .shop {
@@ -23,3 +25,52 @@
             transition: all 0.4s ease;
             @include font-size(70px);
         }
+
+
+.gallery {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: none;
+    height: auto;
+    left: 0;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+    &.gallery--on {
+        display: block;
+    }
+
+    &.bone-daddies {
+        background: url(/assets/images/boneDaddies.jpg);
+    }
+    
+    &.ippudo {
+        background: url(/assets/images/ippudo.jpg);
+    }
+    
+    &.kanada-ya {
+        background: url(/assets/images/kanada-ya.jpg);
+    }
+    
+    &.sasuke {
+        background: url(/assets/images/sasuke.jpg);
+    }
+    
+    &.shoryu {
+        background: url(/assets/images/shoryu.jpg);
+    }
+    
+    &.tonkotsu {
+        background: url(/assets/images/tonkotsu.jpg);
+    }
+    
+    &.united-ramen {
+        background: url(/assets/images/unitedRamen.jpg);
+    }
+
+}
+

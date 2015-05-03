@@ -1,5 +1,3 @@
-
-
 var init = function() {
     $(".shop").hover(function () {
         $(this).toggleClass('transparent');
