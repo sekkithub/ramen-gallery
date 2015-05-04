@@ -26,7 +26,7 @@
 
         {% for block in entry.ramenlist %}
             <li class="shop {{ block.image.first() }} {{ cycle(['green','blue', 'orange', 'dark-pink'], loop.index0) }}">{{ block.restaurantName }}</li>
-            <li class="gallery {{ block.image.first() }}"></li>
+            <li class="gallery" style="background-image: url(/cms/images/ramen/{{ block.image.first() }}.jpg)"></li>
         {% endfor %}
 
     </ul>

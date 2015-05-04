@@ -12,6 +12,8 @@
 
     .title {
         display: table-cell;
+        opacity: 0;
+        padding-top: 5%;
         padding-left: $spacing-unit--large;
         padding-right: $spacing-unit--large;
         vertical-align: middle;

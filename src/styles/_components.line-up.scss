@@ -31,7 +31,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    display: none;
+    opacity: 0;
     height: auto;
     left: 0;
     min-height: 100%;
@@ -44,33 +44,54 @@
         display: block;
     }
 
+/*
     &.bone-daddies {
-        background: url(/assets/images/boneDaddies.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
     
     &.ippudo {
-        background: url(/assets/images/ippudo.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
     
     &.kanada-ya {
-        background: url(/assets/images/kanada-ya.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
     
     &.sasuke {
-        background: url(/assets/images/sasuke.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
     
     &.shoryu {
-        background: url(/assets/images/shoryu.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
     
     &.tonkotsu {
-        background: url(/assets/images/tonkotsu.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
     
     &.united-ramen {
-        background: url(/assets/images/unitedRamen.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
     }
 
+    &.kanada-ya {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+*/
 }
 
