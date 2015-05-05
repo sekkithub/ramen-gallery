@@ -1,7 +1,7 @@
 window.jQuery = window.$ = require("jquery");
 require('velocity-animate');
 require('velocity-animate/velocity.ui');
-require('waypoints');
+// require('waypoints');
 
 //require('./modules/waypoints').init();
 require('./modules/spinner').init();
