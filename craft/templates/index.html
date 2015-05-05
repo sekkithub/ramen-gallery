@@ -26,11 +26,11 @@
 
         {% for block in entry.ramenlist %}
             <li class="shop {{ block.image.first() }} {{ cycle(['green','blue', 'orange', 'dark-pink'], loop.index0) }}">{{ block.restaurantName }}</li>
-            <li class="gallery" style="background-image: url(/cms/images/ramen/{{ block.image.first() }}.jpg)"></li>
+            <img src="/cms/images/ramen/{{ block.image.first() }}.jpg" class="gallery" />
         {% endfor %}
 
     </ul>
-    <div class="bridge-to-footer">
+    <div id="basic-waypoint" class="bridge-to-footer">
         <div class="wrapper">
             <h3><a href="#footer">London Ramen Map</a></h3>
             <a href="#footer">

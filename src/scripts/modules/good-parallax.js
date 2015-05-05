@@ -3,20 +3,17 @@ var utilities = require('./utilities');
 
 var init = function() {
 
-    $(function(){
-        function draw() {
-            requestAnimationFrame(draw);
-            // Drawing code goes here
-            scrollEvent();
-        }
-        draw();
+    function draw() {
+        requestAnimationFrame(draw);
+        // Drawing code goes here
+        scrollEvent();
+    }
+    draw();
 
-        $(window).resize(function () {
-            $('img').css({
-                left: ($(window).width() - $('img').outerWidth()) / 2,
-            });
+    $(window).resize(function () {
+        $('img').css({
+            left: ($(window).width() - $('img').outerWidth()) / 2,
         });
-
     });
 
     function scrollEvent(){
@@ -26,7 +23,8 @@ var init = function() {
             viewportBottom = windowHeight+viewportTop;
     
             if($(window).width())
-    
+
+
             $('[data-parallax="true"]').each(function(){
                 distance = viewportTop * $(this).attr('data-speed');
                 if($(this).attr('data-direction') === 'up'){ sym = '-'; } else { sym = ''; }
