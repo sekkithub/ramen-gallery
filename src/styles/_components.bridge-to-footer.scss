@@ -19,6 +19,7 @@
         text-transform: uppercase;
         @include font-size(60px);
         @include font-weight(bold);
+        animation: load ease-in-out 1.6s infinite alternate;
         
         &:hover {
             animation: load ease-in-out .6s infinite alternate;
@@ -37,7 +38,7 @@
 
 @keyframes load {
     0% { opacity: 1; }
-    100% { opacity: 0; }
+    50% { opacity: 0; }
 }
 
 

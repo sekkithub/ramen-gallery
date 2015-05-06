@@ -3,7 +3,6 @@
    ======================= */
 
 .line-up--title {
-    border-bottom: 10px solid $orange;
     color: $orange;
     display: inline-block;
     font-family: 'Rotondac-Bold';
@@ -15,6 +14,13 @@
     @include font-weight(bold);
 }
 
+    .under-bar {
+        background: $orange;
+        border-radius: 7px;
+        height: 14px;
+        width: 100%;
+    }
+
     .line-up--list {
         font-family: 'Rotondac-Regular';
     }
@@ -25,6 +31,14 @@
             margin-bottom: $spacing-unit--large * 6;
             transition: all 0.4s ease;
             @include font-size(70px);
+            
+            a {
+                color: inherit;
+                
+                &:hover {
+                    text-decoration: none;
+                }
+            }
         }
 
 
@@ -32,8 +46,8 @@
     opacity: 0;
     position: fixed;
     margin: auto;
-    max-height: 80%;
-    max-width: 90%;
+    max-height: 70%;
+    max-width: 60%;
     top: 5%;
     left: 5%;
     right: 0%;

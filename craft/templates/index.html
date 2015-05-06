@@ -21,14 +21,17 @@
 
 {% block content %}
 <div class="container">
-    <div class="line-up--title">{{ entry.title }}</div>
+    <div class="line-up--title">
+        {{ entry.title }}
+        <div class="under-bar"></div>
+    </div>
     <ul class="line-up--list">
-
         {% for block in entry.ramenlist %}
-            <li class="shop {{ block.image.first() }} {{ cycle(['green','blue', 'orange', 'dark-pink'], loop.index0) }}">{{ block.restaurantName }}</li>
+            <li class="shop {{ block.image.first() }} {{ cycle(['green','blue', 'orange', 'dark-pink'], loop.index0) }}">
+                <a href="{{ block.shopLink }}" target="_blank">{{ block.restaurantName }}</a>
+            </li>
             <img src="/cms/images/ramen/{{ block.image.first() }}.jpg" class="gallery" />
         {% endfor %}
-
     </ul>
     <div id="basic-waypoint" class="bridge-to-footer">
         <div class="wrapper">
