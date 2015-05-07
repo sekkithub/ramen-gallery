@@ -14,6 +14,12 @@ $dev = array(
     'password' => 'secret',
     'database' => 'ramengallery_dev');
 
+$staging = array(
+    'server' => 'localhost',
+    'user' => 'ramengallery',
+    'password' => 'EsYPNCf3cJWsYj4L',
+    'database' => 'ramengallery_staging');
+
 return array(
     '*' => array(
         'tablePrefix' => 'craft',
@@ -21,6 +27,6 @@ return array(
     '.app' => $dev,
     'localhost' => $dev,
     '192.168.10.10' => $dev,
-    'ramen-gallery.the-neighbourhood-staging.com' => $staging,
+    'sekkithub.com/ramen-gallery' => $staging,
     'www.sample.com' => $production
 );

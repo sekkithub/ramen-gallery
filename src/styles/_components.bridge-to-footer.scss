@@ -19,10 +19,15 @@
         text-transform: uppercase;
         @include font-size(60px);
         @include font-weight(bold);
-        animation: load ease-in-out 1.6s infinite alternate;
+        animation: load ease-in-out .6s infinite alternate;
+ 
+        @include media-query(palm) {
+            @include font-size(40px);
+        }
+
         
         &:hover {
-            animation: load ease-in-out .6s infinite alternate;
+            animation: load ease-in-out 1.4s infinite alternate;
         }
     }
     

@@ -10,8 +10,8 @@ var init = function() {
         var target = $(this).attr("href");
         // scroll to each target
         $(target).velocity("scroll", {
-            duration: 700,
-            easing: "ease"
+            duration: 1400,
+            easing: "easeInOutQuart"
         });
     });
 }

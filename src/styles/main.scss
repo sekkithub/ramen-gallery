@@ -64,6 +64,20 @@
 @import "../bower_components/inuit-defaults/settings.defaults";
 @import "settings.global";
 @import "settings.colors";
+$breakpoints: (
+        "palm"              "screen and (max-width: 719px)",
+        "lap"               "screen and (min-width: 720px) and (max-width: 1023px)",
+        "lap-and-up"        "screen and (min-width: 720px)",
+        "portrait"          "screen and (max-width: 768px)",
+        "portable"          "screen and (max-width: 1024px)",
+        "tiny-lap"          "screen and (max-height: 680px) and (min-width: 1025px)",
+        "small-lap"         "screen and (max-height: 780px) and (min-width: 1025px)",
+        "desk"              "screen and (min-width: 1025px)",
+        "desk-and-up"       "screen and (min-width: 1280px)",
+        "max-content"       "screen and (max-width: 1440px)",
+        'large'             "screen and (min-width: 1700px)",
+        "retina"            "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)"
+);
 @import "../bower_components/inuit-responsive-settings/settings.responsive";
 
 

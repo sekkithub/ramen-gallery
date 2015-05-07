@@ -4,6 +4,8 @@
 
 .page-foot {
     background: $color-black;
+    display: none;
+    opacity: 0;
     position: relative;
     height: 100vh;
     width: 100%;
@@ -17,11 +19,24 @@
     margin-top: -122px;
     margin-left: -75px;
 
+    @include media-query(palm) {
+        margin-top: -83px;
+        margin-left: -50px;
+    }
+
     a {
         display: inline-block;
     }
 
     object {
         pointer-events: none;
+    }
+
+    embed {
+        width: 150px;
+        
+        @include media-query(palm) {
+            width: 100px;
+        }
     }
 }

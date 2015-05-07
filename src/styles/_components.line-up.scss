@@ -12,13 +12,24 @@
     text-transform: uppercase;
     @include font-size(80px);
     @include font-weight(bold);
+
+    @include media-query(palm) {
+        @include font-size(60px);
+    }
 }
+
+
 
     .under-bar {
         background: $orange;
         border-radius: 7px;
         height: 14px;
         width: 100%;
+
+        @include media-query(palm) {
+            border-radius: 5px;
+            height: 10px;
+        }
     }
 
     .line-up--list {
@@ -27,11 +38,16 @@
     
         .shop {
             cursor: pointer;
+            height: 120px;
             list-style: none;
             margin-bottom: $spacing-unit--large * 6;
             transition: all 0.4s ease;
             @include font-size(70px);
-            
+
+            @include media-query(palm) {
+                @include font-size(40px);
+            }
+
             a {
                 color: inherit;
                 
@@ -53,5 +69,11 @@
     right: 0%;
     bottom: 5%;
     z-index: -1;
+
+    @include media-query(palm) {
+        opacity: 1;
+        position: inherit;
+    }
+
 }
 

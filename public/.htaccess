@@ -259,8 +259,8 @@ AddType application/x-shockwave-flash       swf
 # If using this, make sure the "Remove www. from beginning of URLS" block is commented out
 
  <IfModule mod_rewrite.c>
-  RewriteCond %{HTTP_HOST} !^staging [NC]
-  RewriteCond %{HTTP_HOST} !^.app [NC]
+  RewriteCond %{HTTP_HOST} !^sekkithub.com/ramen-gallery [NC]
+  RewriteCond %{HTTP_HOST} !^ramen-gallery.app [NC]
   RewriteCond %{HTTP_HOST} !^www\. [NC]
   RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
  </IfModule>

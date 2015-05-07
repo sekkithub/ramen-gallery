@@ -3,5 +3,8 @@
    ======================= */
 
 .container {
+    display: none;
+    opacity: 0;
+    padding-top: $spacing-unit--large;
     text-align: center;
 }

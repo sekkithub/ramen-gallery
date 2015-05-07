@@ -25,5 +25,12 @@ return array(
         'devMode' => true,
         'siteUrl' => 'http://ramengallery.app',
         'environment' => 'dev'
+    ),
+
+    'sekkithub.com/ramen-gallery' => array(
+        'devMode' => true,
+        'cooldownDuration' => 0,
+        'siteUrl' => 'http://sekkithub.com/ramen-gallery',
+        'environment' => 'staging'
     )
 );

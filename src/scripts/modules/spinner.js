@@ -1,6 +1,6 @@
 var init = function() {
     $(window).load(function() {
-        $(".spinner").fadeOut("slow");;
+        $(".spinner").fadeOut(1000);
     });
 }
 

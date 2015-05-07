@@ -12,11 +12,16 @@
 
     .title {
         display: table-cell !important;
+        cursor: default;
         opacity: 0;
         padding-left: $spacing-unit--large;
         padding-right: $spacing-unit--large;
         vertical-align: middle;
         text-align: center;
+
+        object {
+            pointer-events: none;
+        }
 
         embed {
             display: inherit;
@@ -45,7 +50,8 @@
         top: 5%;
         left: 5%;
         right: 5%;
-        transform: rotate(5deg);
+        opacity: 0;
+        transform: rotate(-10deg);
         bottom: 5%;
         z-index: -1;
     }
