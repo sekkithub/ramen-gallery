@@ -1,6 +1,9 @@
 {
   "name": "the-neighbourhood-base",
   "version": "1.0.0",
+  "browser": {
+    "waypoints": "./node_modules/waypoints/lib/noframework.waypoints.js"
+  },
   "devDependencies": {
     "browser-sync": "^1.8.0",
     "browserify": "^7.0.2",

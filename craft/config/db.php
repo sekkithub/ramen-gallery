@@ -17,16 +17,24 @@ $dev = array(
 $staging = array(
     'server' => 'localhost',
     'user' => 'ramengallery',
-    'password' => 'EsYPNCf3cJWsYj4L',
+    'password' => 'jK6ZjsNBUpqhyRJj',
     'database' => 'ramengallery_staging');
+
+$production = array(
+        'server' => 'localhost',
+        'user' => 'ramengallery',
+    'password' => 'jK6ZjsNBUpqhyRJj',
+    'database' => 'ramengallery_production');
 
 return array(
     '*' => array(
         'tablePrefix' => 'craft',
     ),
-    '.app' => $dev,
+    '.dev' => $dev,
     'localhost' => $dev,
     '192.168.10.10' => $dev,
-    'sekkithub.com/ramen-gallery' => $staging,
+    'ramengallery.app' => $dev,
+    'ramengallery.sekkithub-staging.com' => $staging,
+    'ramengallery.sekkithub-production.com' => $production,
     'www.sample.com' => $production
 );
