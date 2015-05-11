@@ -17,13 +17,13 @@ $dev = array(
 $staging = array(
     'server' => 'localhost',
     'user' => 'ramengallery',
-    'password' => 'jK6ZjsNBUpqhyRJj',
+    'password' => 'Vhf8d7RfPtY8t8FK',
     'database' => 'ramengallery_staging');
 
 $production = array(
         'server' => 'localhost',
         'user' => 'ramengallery',
-    'password' => 'jK6ZjsNBUpqhyRJj',
+    'password' => 'Vhf8d7RfPtY8t8FK',
     'database' => 'ramengallery_production');
 
 return array(
@@ -33,7 +33,7 @@ return array(
     '.dev' => $dev,
     'localhost' => $dev,
     '192.168.10.10' => $dev,
-    'ramengallery.app' => $dev,
+    'ramen-gallery.app' => $dev,
     'ramengallery-staging.sekkithub.com' => $staging,
     'ramengallery-production.sekkithub.com' => $production,
     'www.sample.com' => $production
