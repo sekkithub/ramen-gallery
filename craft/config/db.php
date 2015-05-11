@@ -34,7 +34,7 @@ return array(
     'localhost' => $dev,
     '192.168.10.10' => $dev,
     'ramengallery.app' => $dev,
-    'ramengallery.sekkithub-staging.com' => $staging,
-    'ramengallery.sekkithub-production.com' => $production,
+    'ramengallery-staging.sekkithub.com' => $staging,
+    'ramengallery-production.sekkithub.com' => $production,
     'www.sample.com' => $production
 );

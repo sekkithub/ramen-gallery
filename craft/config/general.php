@@ -27,17 +27,17 @@ return array(
         'environment' => 'dev'
     ),
 
-    'ramengallery.sekkithub-staging.com' => array(
+    'sekkithub.com/staging/ramen-gallery' => array(
         'devMode' => true,
         'cooldownDuration' => 0,
-        'siteUrl' => 'http://sekkithub-staging.com',
+        'siteUrl' => 'http://sekkithub.com/',
         'environment' => 'staging'
     ),
 
-    'ramengallery.sekkithub-production.com' => array(
+    'sekkithub.com/production/ramen-gallery' => array(
         'devMode' => true,
         'cooldownDuration' => 0,
-        'siteUrl' => 'http://ramen-gallery.sekkithub-production.com',
+        'siteUrl' => 'http://sekkithub.com/',
         'environment' => 'production'
     ),
 );
