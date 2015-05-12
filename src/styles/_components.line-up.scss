@@ -14,6 +14,7 @@
     @include font-weight(bold);
 
     @include media-query(palm) {
+        margin-bottom: $spacing-unit--large * 2;
         @include font-size(60px);
     }
 }
@@ -34,6 +35,13 @@
 
     .line-up--list {
         font-family: 'Rotondac-Regular';
+        
+        img {
+            @include media-query(palm) {
+                opacity: 1 !important;
+                margin-bottom: $spacing-unit--large * 3;
+            }
+        }
     }
     
         .shop {
@@ -45,7 +53,9 @@
             @include font-size(70px);
 
             @include media-query(palm) {
-                @include font-size(40px);
+                height: auto;
+                margin-bottom: $spacing-unit;
+                @include font-size(60px);
             }
 
             a {
@@ -71,6 +81,7 @@
     z-index: -1;
 
     @include media-query(palm) {
+        max-width: 90%;
         opacity: 1;
         position: inherit;
     }

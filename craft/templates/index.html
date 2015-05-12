@@ -27,7 +27,7 @@
     </div>
     <ul class="line-up--list">
         {% for block in entry.ramenlist %}
-            <li class="shop {{ block.image.first() }} {{ cycle(['green','blue', 'orange', 'dark-pink'], loop.index0) }}">
+            <li class="[ shop  shop--hover ] {{ block.image.first() }} {{ cycle(['green','blue', 'orange', 'dark-pink'], loop.index0) }}">
                 <a href="{{ block.shopLink }}" target="_blank">{{ block.restaurantName }}</a>
             </li>
             <img src="/cms/images/ramen/{{ block.image.first() }}.jpg" class="gallery" />
