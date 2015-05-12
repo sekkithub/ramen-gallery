@@ -21,8 +21,8 @@ $staging = array(
     'database' => 'ramengallery_staging');
 
 $production = array(
-        'server' => 'localhost',
-        'user' => 'ramengallery',
+    'server' => 'localhost',
+    'user' => 'ramengallery',
     'password' => 'Vhf8d7RfPtY8t8FK',
     'database' => 'ramengallery_production');
 
@@ -35,6 +35,6 @@ return array(
     '192.168.10.10' => $dev,
     'ramen-gallery.app' => $dev,
     'ramengallery-staging.sekkithub.com' => $staging,
-    'ramengallery-production.sekkithub.com' => $production,
+    'ramengallery.sekkithub.com' => $production,
     'www.sample.com' => $production
 );
