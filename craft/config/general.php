@@ -37,7 +37,7 @@ return array(
     'ramengallery.sekkithub.com' => array(
         'devMode' => true,
         'cooldownDuration' => 0,
-        'siteUrl' => 'ramengallery.sekkithub.com',
+        'siteUrl' => 'http://ramengallery.sekkithub.com/',
         'environment' => 'production'
     ),
 );
