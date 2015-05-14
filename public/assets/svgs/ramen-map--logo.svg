@@ -2,11 +2,15 @@
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="-117.5 -56 261 412" style="enable-background:new -117.5 -56 261 412;" xml:space="preserve">
+	 viewBox="-418 43 163 216" style="enable-background:new -418 43 163 216;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;}
 </style>
-<path id="location-icon" class="st0" d="M13-56C-59.1-56-117.5,2.4-117.5,74.5S-60.4,230.3,13,356
-	C86.4,230.3,143.5,146.6,143.5,74.5S85.1-56,13-56z M13,118.1c-25.8,0-46.8-21-46.8-46.8s21-46.8,46.8-46.8s46.8,21,46.8,46.8
-	S38.8,118.1,13,118.1z"/>
+<g transform="translate(0.000000,216.000000) scale(0.100000,-0.100000)">
+	<path class="st0" d="M-3530,1715c-300-60-540-280-620-566c-87-314,32-732,315-1108c116-154,305-344,456-459c13-10,31,1,110,67
+		c526,439,811,1059,689,1500c-81,290-323,508-628,567C-3298,1733-3442,1733-3530,1715z M-3126,1352c2-4-47-76-111-161
+		c-63-84-113-154-111-156s68,52,148,120s151,124,158,124c32,2,1-33-120-134l-131-110l173-3l172-2l-4-138c-5-153-20-205-69-247
+		c-16-13-46-27-67-31c-45-8-62-20-62-45c0-18-11-19-208-19h-208l-10,28c-9,23-19,30-52,36c-25,4-55,18-77,37c-50,44-65,104-65,256
+		v123h188l187,1l120,164C-3164,1347-3139,1373-3126,1352z"/>
+</g>
 </svg>
